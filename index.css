@@ -69,8 +69,8 @@ h3 { font-size:1.1rem; font-weight:600; margin-bottom:8px; }
 .flashcard-inner { width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:transform .6s cubic-bezier(.4,0,.2,1); }
 .flashcard-inner.flipped { transform:rotateY(180deg); }
 .flashcard-front, .flashcard-back { position:absolute; width:100%; height:100%; backface-visibility:hidden; border-radius:var(--radius); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px; }
-.flashcard-front { background:linear-gradient(135deg, rgba(255,107,157,0.15), rgba(179,136,255,0.15)); border:1px solid rgba(255,107,157,0.3); }
-.flashcard-back { background:linear-gradient(135deg, rgba(100,181,246,0.15), rgba(105,240,174,0.15)); border:1px solid rgba(100,181,246,0.3); transform:rotateY(180deg); }
+.flashcard-front { background:linear-gradient(135deg, #2a1528, #1f1835); border:1px solid rgba(255,107,157,0.3); }
+.flashcard-back { background:linear-gradient(135deg, #142030, #132825); border:1px solid rgba(100,181,246,0.3); transform:rotateY(180deg); }
 .flashcard-char { font-size:6rem; font-weight:700; font-family:'Noto Sans JP',sans-serif; line-height:1.2; }
 .flashcard-hint { font-size:.85rem; color:var(--text3); margin-top:16px; }
 .flashcard-romaji { font-size:2rem; font-weight:600; color:var(--blue); }
