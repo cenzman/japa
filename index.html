@@ -41,12 +41,43 @@
       <h1 class="gradient-text">フラッシュカード</h1>
       <p class="subtitle">Klikněte na kartu pro otočení</p>
       <div class="flashcard-filters" id="flashcard-filters"></div>
-      <div class="flashcard-container">
-        <div class="flashcard-nav">
+
+      <!-- Mode Toggle -->
+      <div class="srs-mode-toggle" id="srs-mode-toggle">
+        <button class="mode-btn active" id="mode-srs" onclick="setFcMode('srs')">🧠 SRS opakování</button>
+        <button class="mode-btn" id="mode-browse" onclick="setFcMode('browse')">📖 Procházet vše</button>
+      </div>
+
+      <!-- SRS Status Bar -->
+      <div class="srs-status-bar" id="srs-status-bar">
+        <div class="srs-stat srs-new"><span class="srs-stat-icon">🆕</span><span class="srs-stat-count" id="srs-new-count">0</span><span class="srs-stat-label">Nové</span></div>
+        <div class="srs-stat srs-learning"><span class="srs-stat-icon">📖</span><span class="srs-stat-count" id="srs-learning-count">0</span><span class="srs-stat-label">Učení</span></div>
+        <div class="srs-stat srs-review"><span class="srs-stat-icon">🔄</span><span class="srs-stat-count" id="srs-review-count">0</span><span class="srs-stat-label">Opakování</span></div>
+      </div>
+
+      <!-- SRS Empty State -->
+      <div class="srs-empty" id="srs-empty" style="display:none">
+        <div class="card" style="text-align:center;padding:48px 32px">
+          <div style="font-size:3rem;margin-bottom:12px">🎉</div>
+          <h2>Gratulujeme!</h2>
+          <p style="color:var(--text2);margin:8px 0 20px">Žádné karty k opakování. Vraťte se později nebo přidejte nové karty.</p>
+          <button class="btn btn-primary" onclick="setFcMode('browse')">📖 Procházet karty</button>
+        </div>
+      </div>
+
+      <div class="flashcard-container" id="flashcard-container">
+        <!-- Browse mode nav -->
+        <div class="flashcard-nav" id="fc-browse-nav">
           <button class="btn btn-secondary" id="fc-prev" onclick="flashcardPrev()">◀</button>
           <span class="flashcard-counter" id="fc-counter">1 / 46</span>
           <button class="btn btn-secondary" id="fc-next" onclick="flashcardNext()">▶</button>
         </div>
+
+        <!-- SRS mode counter -->
+        <div class="srs-queue-counter" id="srs-queue-counter" style="display:none">
+          <span id="srs-remaining">0</span> karet zbývá
+        </div>
+
         <div class="flashcard-wrapper" id="flashcard-wrapper" onclick="flashcardFlip()">
           <div class="flashcard-inner" id="flashcard-inner">
             <div class="flashcard-front">
@@ -59,11 +90,33 @@
             </div>
           </div>
         </div>
-        <div class="btn-group" style="justify-content:center">
+
+        <!-- SRS Grade Buttons (shown in SRS mode after flip) -->
+        <div class="srs-grade-bar" id="srs-grade-bar" style="display:none">
+          <button class="grade-btn grade-again" onclick="flashcardGrade(1)">
+            <span class="grade-label">Again</span>
+            <span class="grade-interval" id="grade-interval-1"></span>
+          </button>
+          <button class="grade-btn grade-hard" onclick="flashcardGrade(2)">
+            <span class="grade-label">Hard</span>
+            <span class="grade-interval" id="grade-interval-2"></span>
+          </button>
+          <button class="grade-btn grade-good" onclick="flashcardGrade(3)">
+            <span class="grade-label">Good</span>
+            <span class="grade-interval" id="grade-interval-3"></span>
+          </button>
+          <button class="grade-btn grade-easy" onclick="flashcardGrade(4)">
+            <span class="grade-label">Easy</span>
+            <span class="grade-interval" id="grade-interval-4"></span>
+          </button>
+        </div>
+
+        <!-- Browse mode buttons -->
+        <div class="btn-group" id="fc-browse-btns" style="justify-content:center;display:none">
           <button class="btn btn-danger" onclick="flashcardMark(false)">✕ Neznám</button>
           <button class="btn btn-success" onclick="flashcardMark(true)">✓ Znám</button>
         </div>
-        <div style="margin-top:12px">
+        <div id="fc-browse-shuffle" style="margin-top:12px;display:none">
           <button class="btn btn-secondary btn-sm" onclick="flashcardShuffle()">🔀 Zamíchat</button>
         </div>
       </div>

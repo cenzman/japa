@@ -1,6 +1,8 @@
 // 漢字マスター - Main Application
 const db = new JapaneseDB();
 let fcDeck=[], fcIndex=0, fcCategory='hiragana';
+let fcMode='srs'; // 'srs' | 'browse'
+let srsQueue=[], srsQueueIndex=0;
 let quizData=[], quizIndex=0, quizScore=0, quizAnswered=false;
 let lessonChars=[], lessonStep=0, currentLesson=null;
 
@@ -62,34 +64,137 @@ async function loadDashboard(){
   const hCount=prog.filter(p=>p.category==='hiragana'&&p.level>=2).length;
   const kCount=prog.filter(p=>p.category==='katakana'&&p.level>=2).length;
   const jCount=prog.filter(p=>p.category==='kanji'&&p.level>=2).length;
+  // SRS due counts for dashboard
+  const allChars=[...HIRAGANA,...KATAKANA,...KANJI];
+  const now=Date.now();
+  const dueTotal=prog.filter(p=>p.dueDate&&p.dueDate<=now).length;
+  const newTotal=allChars.length-prog.length;
   document.getElementById('dashboard-stats').innerHTML=`
     <div class="card stat-card"><div class="stat-icon">🔥</div><div class="stat-value" style="color:var(--orange)">${stats.streak||0}</div><div class="stat-label">Denní streak</div></div>
     <div class="card stat-card"><div class="stat-icon">📝</div><div class="stat-value" style="color:var(--blue)">${stats.totalReviews||0}</div><div class="stat-label">Celkem opakování</div></div>
     <div class="card stat-card"><div class="stat-icon">🎯</div><div class="stat-value" style="color:var(--green)">${stats.totalReviews?Math.round(stats.totalCorrect/stats.totalReviews*100):0}%</div><div class="stat-label">Úspěšnost</div></div>
-    <div class="card stat-card"><div class="stat-icon">🏆</div><div class="stat-value" style="color:var(--gold)">${stats.quizBestScore||0}%</div><div class="stat-label">Nejlepší kvíz</div></div>`;
+    <div class="card stat-card"><div class="stat-icon">📬</div><div class="stat-value" style="color:var(--pink)">${dueTotal+Math.min(newTotal,20)}</div><div class="stat-label">K opakování</div></div>`;
   document.getElementById('dashboard-progress').innerHTML=`
     <div class="card"><h3>あ Hiragana</h3><div class="progress-bar"><div class="progress-fill pink" style="width:${hCount/46*100}%"></div></div><div class="progress-label"><span>${hCount}/46 znaků</span><span>${Math.round(hCount/46*100)}%</span></div></div>
     <div class="card"><h3>ア Katakana</h3><div class="progress-bar"><div class="progress-fill blue" style="width:${kCount/46*100}%"></div></div><div class="progress-label"><span>${kCount}/46 znaků</span><span>${Math.round(kCount/46*100)}%</span></div></div>
     <div class="card"><h3>漢 Kanji</h3><div class="progress-bar"><div class="progress-fill green" style="width:${jCount/KANJI.length*100}%"></div></div><div class="progress-label"><span>${jCount}/${KANJI.length} znaků</span><span>${Math.round(jCount/KANJI.length*100)}%</span></div></div>`;
 }
 
+
 // FLASHCARDS
-function initFlashcards(){
+function getCategoryChars(cat){
+  if(cat==='hiragana') return HIRAGANA;
+  if(cat==='katakana') return KATAKANA;
+  return KANJI;
+}
+async function initFlashcards(){
   const f=document.getElementById('flashcard-filters');
   f.innerHTML=['hiragana','katakana','kanji'].map(c=>
     `<button class="btn btn-sm ${c===fcCategory?'btn-primary':'btn-secondary'}" onclick="setFcCategory('${c}')">${c==='hiragana'?'あ Hiragana':c==='katakana'?'ア Katakana':'漢 Kanji'}</button>`
   ).join('');
-  loadFcDeck();
+  // Update mode toggle active state
+  document.getElementById('mode-srs').classList.toggle('active', fcMode==='srs');
+  document.getElementById('mode-browse').classList.toggle('active', fcMode==='browse');
+  if(fcMode==='srs') await loadSRSQueue();
+  else loadFcDeck();
+}
+function setFcMode(mode){
+  fcMode=mode;
+  initFlashcards();
 }
 function setFcCategory(c){ fcCategory=c; initFlashcards(); }
+
+// --- BROWSE MODE ---
 function loadFcDeck(){
-  if(fcCategory==='hiragana') fcDeck=[...HIRAGANA];
-  else if(fcCategory==='katakana') fcDeck=[...KATAKANA];
-  else fcDeck=[...KANJI];
+  fcDeck=[...getCategoryChars(fcCategory)];
   fcIndex=0;
+  showBrowseUI();
   renderFlashcard();
 }
+function showBrowseUI(){
+  document.getElementById('fc-browse-nav').style.display='';
+  document.getElementById('fc-browse-btns').style.display='flex';
+  document.getElementById('fc-browse-shuffle').style.display='';
+  document.getElementById('srs-grade-bar').style.display='none';
+  document.getElementById('srs-queue-counter').style.display='none';
+  document.getElementById('srs-status-bar').style.display='none';
+  document.getElementById('srs-empty').style.display='none';
+  document.getElementById('flashcard-container').style.display='';
+}
+
+// --- SRS MODE ---
+async function loadSRSQueue(){
+  const chars=getCategoryChars(fcCategory);
+  const due=await db.getDueCards(fcCategory);
+  const learning=await db.getLearningCards(fcCategory);
+  const newCards=await db.getNewCards(fcCategory, chars, 20);
+  // Build queue: learning first, then review, then new
+  const allProg=await db.getAllProgress();
+  const progMap={};
+  allProg.forEach(p=>progMap[p.id]=p);
+  srsQueue=[];
+  // Add learning cards
+  learning.forEach(p=>{
+    const ch=chars.find(c=>fcCategory+'_'+c.char===p.id);
+    if(ch) srsQueue.push({...ch, _prog:p, _type:'learning'});
+  });
+  // Add review cards (exclude ones already added as learning)
+  const learningIds=new Set(learning.map(p=>p.id));
+  due.forEach(p=>{
+    if(learningIds.has(p.id)) return;
+    const ch=chars.find(c=>fcCategory+'_'+c.char===p.id);
+    if(ch) srsQueue.push({...ch, _prog:p, _type:'review'});
+  });
+  // Add new cards
+  newCards.forEach(c=>{
+    srsQueue.push({...c, _prog:null, _type:'new'});
+  });
+  srsQueue.sort(()=>Math.random()-.5);
+  srsQueueIndex=0;
+  await updateSRSStatusBar();
+  showSRSUI();
+  if(srsQueue.length>0) renderSRSCard();
+  else showSRSEmpty();
+}
+async function updateSRSStatusBar(){
+  const chars=getCategoryChars(fcCategory);
+  const counts=await db.getDueCounts(fcCategory, chars);
+  document.getElementById('srs-new-count').textContent=counts.newCount;
+  document.getElementById('srs-learning-count').textContent=counts.learningCount;
+  document.getElementById('srs-review-count').textContent=counts.reviewCount;
+}
+function showSRSUI(){
+  document.getElementById('fc-browse-nav').style.display='none';
+  document.getElementById('fc-browse-btns').style.display='none';
+  document.getElementById('fc-browse-shuffle').style.display='none';
+  document.getElementById('srs-grade-bar').style.display='none';
+  document.getElementById('srs-queue-counter').style.display='';
+  document.getElementById('srs-status-bar').style.display='';
+  document.getElementById('srs-empty').style.display='none';
+  document.getElementById('flashcard-container').style.display='';
+}
+function showSRSEmpty(){
+  document.getElementById('flashcard-container').style.display='none';
+  document.getElementById('srs-empty').style.display='';
+}
+function renderSRSCard(){
+  if(srsQueueIndex>=srsQueue.length){ showSRSEmpty(); updateSRSStatusBar(); return; }
+  const c=srsQueue[srsQueueIndex];
+  document.getElementById('fc-char').textContent=c.char;
+  document.getElementById('fc-romaji').textContent=c.romaji;
+  document.getElementById('fc-meaning').textContent=c.meaning||'';
+  document.getElementById('srs-remaining').textContent=srsQueue.length-srsQueueIndex;
+  document.getElementById('flashcard-inner').classList.remove('flipped');
+  document.getElementById('srs-grade-bar').style.display='none';
+  // Precompute interval previews
+  const prog=c._prog||{easeFactor:2.5, interval:0, repetitions:0};
+  const intervals=db.computeNextIntervals(prog);
+  for(let q=1;q<=4;q++){
+    document.getElementById('grade-interval-'+q).textContent=intervals[q];
+  }
+}
 function renderFlashcard(){
+  if(fcMode==='srs'){ renderSRSCard(); return; }
   if(!fcDeck.length) return;
   const c=fcDeck[fcIndex];
   document.getElementById('fc-char').textContent=c.char;
@@ -98,19 +203,38 @@ function renderFlashcard(){
   document.getElementById('fc-counter').textContent=`${fcIndex+1} / ${fcDeck.length}`;
   document.getElementById('flashcard-inner').classList.remove('flipped');
 }
-function flashcardFlip(){ document.getElementById('flashcard-inner').classList.toggle('flipped'); }
+function flashcardFlip(){
+  document.getElementById('flashcard-inner').classList.toggle('flipped');
+  // In SRS mode, show grade buttons when flipped
+  if(fcMode==='srs'){
+    const isFlipped=document.getElementById('flashcard-inner').classList.contains('flipped');
+    document.getElementById('srs-grade-bar').style.display=isFlipped?'flex':'none';
+  }
+}
 function flashcardNext(){ fcIndex=(fcIndex+1)%fcDeck.length; renderFlashcard(); }
 function flashcardPrev(){ fcIndex=(fcIndex-1+fcDeck.length)%fcDeck.length; renderFlashcard(); }
 function flashcardShuffle(){ fcDeck.sort(()=>Math.random()-.5); fcIndex=0; renderFlashcard(); toast('Karty zamíchány! 🔀'); }
 async function flashcardMark(correct){
   const c=fcDeck[fcIndex];
-  const cat=fcCategory;
-  const id=cat+'_'+c.char;
-  await db.updateCharacterProgress(id, cat, correct);
+  const id=fcCategory+'_'+c.char;
+  await db.updateCharacterProgress(id, fcCategory, correct);
   await db.updateStats(correct);
   toast(correct?'Správně! ✓':'Označeno k opakování','success');
   flashcardNext();
 }
+async function flashcardGrade(quality){
+  const c=srsQueue[srsQueueIndex];
+  if(!c) return;
+  const id=fcCategory+'_'+c.char;
+  await db.updateSRS(id, fcCategory, quality);
+  await db.updateStats(quality>=3);
+  const labels={1:'Again',2:'Hard',3:'Good',4:'Easy'};
+  toast(`${labels[quality]} — ${c.char}`,'success');
+  srsQueueIndex++;
+  await updateSRSStatusBar();
+  renderSRSCard();
+}
+
 
 // QUIZ
 function resetQuiz(){

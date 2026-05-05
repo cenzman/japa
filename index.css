@@ -80,6 +80,43 @@ h3 { font-size:1.1rem; font-weight:600; margin-bottom:8px; }
 .flashcard-counter { color:var(--text2); font-size:.9rem; min-width:80px; text-align:center; }
 .flashcard-filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
 
+/* SRS MODE TOGGLE */
+.srs-mode-toggle { display:flex; gap:4px; background:var(--surface); border-radius:var(--radius-sm); padding:4px; margin-bottom:16px; max-width:360px; }
+.mode-btn { flex:1; padding:10px 16px; text-align:center; border-radius:8px; cursor:pointer; font-size:.9rem; font-weight:500; color:var(--text2); transition:all .3s; border:none; background:none; font-family:inherit; }
+.mode-btn.active { background:linear-gradient(135deg,var(--pink),var(--purple)); color:#fff; }
+.mode-btn:not(.active):hover { color:var(--text); background:rgba(255,255,255,0.05); }
+
+/* SRS STATUS BAR */
+.srs-status-bar { display:flex; gap:12px; margin-bottom:20px; }
+.srs-stat { display:flex; align-items:center; gap:8px; padding:10px 16px; border-radius:var(--radius-sm); background:var(--glass); border:1px solid var(--glass-border); flex:1; max-width:180px; }
+.srs-stat-icon { font-size:1.1rem; }
+.srs-stat-count { font-size:1.4rem; font-weight:700; }
+.srs-stat-label { font-size:.75rem; color:var(--text3); }
+.srs-new .srs-stat-count { color:var(--blue); }
+.srs-learning .srs-stat-count { color:var(--orange); }
+.srs-review .srs-stat-count { color:var(--green); }
+
+/* SRS GRADE BAR */
+.srs-grade-bar { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; animation:fadeIn .3s ease; }
+.grade-btn { display:flex; flex-direction:column; align-items:center; gap:4px; padding:12px 20px; border-radius:var(--radius-sm); border:2px solid transparent; cursor:pointer; font-family:inherit; transition:all .25s ease; min-width:80px; }
+.grade-btn:hover { transform:translateY(-3px); }
+.grade-label { font-size:.9rem; font-weight:600; }
+.grade-interval { font-size:.75rem; opacity:.8; }
+
+.grade-again { background:rgba(255,82,82,0.15); border-color:rgba(255,82,82,0.4); color:var(--red); }
+.grade-again:hover { background:rgba(255,82,82,0.25); box-shadow:0 4px 16px rgba(255,82,82,0.3); }
+.grade-hard { background:rgba(255,171,64,0.15); border-color:rgba(255,171,64,0.4); color:var(--orange); }
+.grade-hard:hover { background:rgba(255,171,64,0.25); box-shadow:0 4px 16px rgba(255,171,64,0.3); }
+.grade-good { background:rgba(105,240,174,0.15); border-color:rgba(105,240,174,0.4); color:var(--green); }
+.grade-good:hover { background:rgba(105,240,174,0.25); box-shadow:0 4px 16px rgba(105,240,174,0.3); }
+.grade-easy { background:rgba(100,181,246,0.15); border-color:rgba(100,181,246,0.4); color:var(--blue); }
+.grade-easy:hover { background:rgba(100,181,246,0.25); box-shadow:0 4px 16px rgba(100,181,246,0.3); }
+
+/* SRS QUEUE COUNTER */
+.srs-queue-counter { text-align:center; color:var(--text2); font-size:.9rem; margin-bottom:8px; font-weight:500; }
+.srs-queue-counter span { color:var(--pink); font-weight:700; font-size:1.1rem; }
+
+
 /* QUIZ */
 .quiz-area { max-width:600px; margin:0 auto; }
 .quiz-question { text-align:center; padding:40px 20px; }
