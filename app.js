@@ -6,9 +6,33 @@ let srsQueue=[], srsQueueIndex=0;
 let quizData=[], quizIndex=0, quizScore=0, quizAnswered=false;
 let lessonChars=[], lessonStep=0, currentLesson=null;
 
+// Vocab chapter data (loaded from JSON files)
+const VOCAB_CHAPTERS = {};
+const VOCAB_CHAPTER_FILES = [
+  { id: 'vocab1', label: '📗 Kapitola 1', file: 'vocab_chapter1.json' },
+  { id: 'vocab2', label: '📘 Kapitola 2', file: 'vocab_chapter2.json' },
+  { id: 'vocab3', label: '📙 Kapitola 3', file: 'vocab_chapter3.json' },
+];
+
+async function loadVocabChapters() {
+  for (const ch of VOCAB_CHAPTER_FILES) {
+    try {
+      const resp = await fetch(ch.file);
+      if (resp.ok) {
+        const data = await resp.json();
+        VOCAB_CHAPTERS[ch.id] = (data.vocab || []).map(v => ({
+          char: v.char, romaji: v.romaji, meaning: v.meaning || '',
+          group: v.category || 'vocab', category: ch.id
+        }));
+      }
+    } catch (e) { console.warn('Failed to load ' + ch.file, e); }
+  }
+}
+
 // INIT
 window.addEventListener('DOMContentLoaded', async()=>{
   await db.init();
+  await loadVocabChapters();
   createSakura();
   setupNav();
   loadDashboard();
@@ -85,18 +109,43 @@ async function loadDashboard(){
 function getCategoryChars(cat){
   if(cat==='hiragana') return HIRAGANA;
   if(cat==='katakana') return KATAKANA;
+  if(cat==='kanji') return KANJI;
+  if(VOCAB_CHAPTERS[cat]) return VOCAB_CHAPTERS[cat];
   return KANJI;
 }
+function isVocabCategory(cat){ return cat && cat.startsWith('vocab'); }
 async function initFlashcards(){
   const f=document.getElementById('flashcard-filters');
-  f.innerHTML=['hiragana','katakana','kanji'].map(c=>
-    `<button class="btn btn-sm ${c===fcCategory?'btn-primary':'btn-secondary'}" onclick="setFcCategory('${c}')">${c==='hiragana'?'あ Hiragana':c==='katakana'?'ア Katakana':'漢 Kanji'}</button>`
+  // Base character categories
+  const baseCats = ['hiragana','katakana','kanji'];
+  const baseLabels = { hiragana: 'あ Hiragana', katakana: 'ア Katakana', kanji: '漢 Kanji' };
+  let html = baseCats.map(c=>
+    `<button class="btn btn-sm ${c===fcCategory?'btn-primary':'btn-secondary'}" onclick="setFcCategory('${c}')">${baseLabels[c]}</button>`
   ).join('');
+  // Vocab chapter buttons
+  const vocabChapters = VOCAB_CHAPTER_FILES.filter(ch => VOCAB_CHAPTERS[ch.id] && VOCAB_CHAPTERS[ch.id].length > 0);
+  if(vocabChapters.length > 0){
+    html += '<span class="fc-filter-divider">|</span>';
+    html += vocabChapters.map(ch =>
+      `<button class="btn btn-sm ${ch.id===fcCategory?'btn-primary':'btn-secondary'}" onclick="setFcCategory('${ch.id}')">${ch.label}</button>`
+    ).join('');
+  }
+  f.innerHTML = html;
   // Update mode toggle active state
   document.getElementById('mode-srs').classList.toggle('active', fcMode==='srs');
   document.getElementById('mode-browse').classList.toggle('active', fcMode==='browse');
-  if(fcMode==='srs') await loadSRSQueue();
-  else loadFcDeck();
+  // Vocab categories only support browse mode (no SRS progress IDs for them yet)
+  if(isVocabCategory(fcCategory)){
+    fcMode = 'browse';
+    document.getElementById('mode-srs').classList.remove('active');
+    document.getElementById('mode-browse').classList.add('active');
+    document.getElementById('srs-mode-toggle').style.display='none';
+    loadFcDeck();
+  } else {
+    document.getElementById('srs-mode-toggle').style.display='';
+    if(fcMode==='srs') await loadSRSQueue();
+    else loadFcDeck();
+  }
 }
 function setFcMode(mode){
   fcMode=mode;
@@ -192,6 +241,10 @@ function renderSRSCard(){
   for(let q=1;q<=4;q++){
     document.getElementById('grade-interval-'+q).textContent=intervals[q];
   }
+  // Adjust font size for long vocab words
+  const fcCharEl = document.getElementById('fc-char');
+  const len = c.char.length;
+  fcCharEl.style.fontSize = len <= 2 ? '6rem' : len <= 4 ? '4rem' : len <= 6 ? '3rem' : '2.2rem';
 }
 function renderFlashcard(){
   if(fcMode==='srs'){ renderSRSCard(); return; }
@@ -202,6 +255,10 @@ function renderFlashcard(){
   document.getElementById('fc-meaning').textContent=c.meaning||'';
   document.getElementById('fc-counter').textContent=`${fcIndex+1} / ${fcDeck.length}`;
   document.getElementById('flashcard-inner').classList.remove('flipped');
+  // Adjust font size for long vocab words
+  const fcCharEl = document.getElementById('fc-char');
+  const len = c.char.length;
+  fcCharEl.style.fontSize = len <= 2 ? '6rem' : len <= 4 ? '4rem' : len <= 6 ? '3rem' : '2.2rem';
 }
 function flashcardFlip(){
   document.getElementById('flashcard-inner').classList.toggle('flipped');

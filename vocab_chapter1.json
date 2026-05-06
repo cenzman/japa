@@ -1,0 +1,400 @@
+{
+  "vocab": [
+    {
+      "char": "だいがく",
+      "romaji": "daigaku",
+      "meaning": "college; university",
+      "category": "school"
+    },
+    {
+      "char": "こうこう",
+      "romaji": "kookoo",
+      "meaning": "high school",
+      "category": "school"
+    },
+    {
+      "char": "がくせい",
+      "romaji": "gakusee",
+      "meaning": "student",
+      "category": "school"
+    },
+    {
+      "char": "だいがくせい",
+      "romaji": "daigakusee",
+      "meaning": "college student",
+      "category": "school"
+    },
+    {
+      "char": "りゅうがくせい",
+      "romaji": "ryuugakusee",
+      "meaning": "international student",
+      "category": "school"
+    },
+    {
+      "char": "せんせい",
+      "romaji": "sensee",
+      "meaning": "teacher; professor",
+      "category": "school"
+    },
+    {
+      "char": "～ねんせい",
+      "romaji": "...nensee",
+      "meaning": "...year student",
+      "category": "school"
+    },
+    {
+      "char": "いちねんせい",
+      "romaji": "ichinensee",
+      "meaning": "first-year student",
+      "category": "school"
+    },
+    {
+      "char": "せんこう",
+      "romaji": "senkoo",
+      "meaning": "major",
+      "category": "school"
+    },
+    {
+      "char": "わたし",
+      "romaji": "watashi",
+      "meaning": "I",
+      "category": "person"
+    },
+    {
+      "char": "ともだち",
+      "romaji": "tomodachi",
+      "meaning": "friend",
+      "category": "person"
+    },
+    {
+      "char": "～さん",
+      "romaji": "...san",
+      "meaning": "Mr./Ms. ...",
+      "category": "person"
+    },
+    {
+      "char": "～じん",
+      "romaji": "...jin",
+      "meaning": "...people",
+      "category": "person"
+    },
+    {
+      "char": "にほんじん",
+      "romaji": "nihonjin",
+      "meaning": "Japanese people",
+      "category": "person"
+    },
+    {
+      "char": "いま",
+      "romaji": "ima",
+      "meaning": "now",
+      "category": "time"
+    },
+    {
+      "char": "ごぜん",
+      "romaji": "gozen",
+      "meaning": "A.M.",
+      "category": "time"
+    },
+    {
+      "char": "ごご",
+      "romaji": "gogo",
+      "meaning": "P.M.",
+      "category": "time"
+    },
+    {
+      "char": "～じ",
+      "romaji": "...ji",
+      "meaning": "o'clock",
+      "category": "time"
+    },
+    {
+      "char": "いちじ",
+      "romaji": "ichiji",
+      "meaning": "one o'clock",
+      "category": "time"
+    },
+    {
+      "char": "はん",
+      "romaji": "han",
+      "meaning": "half",
+      "category": "time"
+    },
+    {
+      "char": "にじはん",
+      "romaji": "niji han",
+      "meaning": "half past two",
+      "category": "time"
+    },
+    {
+      "char": "にほん",
+      "romaji": "Nihon",
+      "meaning": "Japan",
+      "category": "others"
+    },
+    {
+      "char": "アメリカ",
+      "romaji": "Amerika",
+      "meaning": "U.S.A.",
+      "category": "others"
+    },
+    {
+      "char": "～ご",
+      "romaji": "...go",
+      "meaning": "...language",
+      "category": "others"
+    },
+    {
+      "char": "にほんご",
+      "romaji": "nihongo",
+      "meaning": "Japanese language",
+      "category": "others"
+    },
+    {
+      "char": "～さい",
+      "romaji": "...sai",
+      "meaning": "...years old",
+      "category": "others"
+    },
+    {
+      "char": "でんわ",
+      "romaji": "denwa",
+      "meaning": "telephone",
+      "category": "others"
+    },
+    {
+      "char": "～ばん",
+      "romaji": "...ban",
+      "meaning": "number ...",
+      "category": "others"
+    },
+    {
+      "char": "ばんごう",
+      "romaji": "bangoo",
+      "meaning": "number",
+      "category": "others"
+    },
+    {
+      "char": "なまえ",
+      "romaji": "namae",
+      "meaning": "name",
+      "category": "others"
+    },
+    {
+      "char": "なん/なに",
+      "romaji": "nan/nani",
+      "meaning": "what",
+      "category": "others"
+    },
+    {
+      "char": "あのう",
+      "romaji": "anoo",
+      "meaning": "um...",
+      "category": "expressions"
+    },
+    {
+      "char": "はい",
+      "romaji": "hai",
+      "meaning": "yes",
+      "category": "expressions"
+    },
+    {
+      "char": "そうです",
+      "romaji": "soo desu",
+      "meaning": "That's right.",
+      "category": "expressions"
+    },
+    {
+      "char": "そうですか",
+      "romaji": "soo desu ka",
+      "meaning": "I see.; Is that so?",
+      "category": "expressions"
+    },
+    {
+      "char": "イギリス",
+      "romaji": "Igirisu",
+      "meaning": "Britain",
+      "category": "countries"
+    },
+    {
+      "char": "オーストラリア",
+      "romaji": "Oosutoraria",
+      "meaning": "Australia",
+      "category": "countries"
+    },
+    {
+      "char": "かんこく",
+      "romaji": "Kankoku",
+      "meaning": "Korea",
+      "category": "countries"
+    },
+    {
+      "char": "カナダ",
+      "romaji": "Kanada",
+      "meaning": "Canada",
+      "category": "countries"
+    },
+    {
+      "char": "ちゅうごく",
+      "romaji": "Chuugoku",
+      "meaning": "China",
+      "category": "countries"
+    },
+    {
+      "char": "インド",
+      "romaji": "Indo",
+      "meaning": "India",
+      "category": "countries"
+    },
+    {
+      "char": "エジプト",
+      "romaji": "Ejiputo",
+      "meaning": "Egypt",
+      "category": "countries"
+    },
+    {
+      "char": "フィリピン",
+      "romaji": "Firipin",
+      "meaning": "Philippines",
+      "category": "countries"
+    },
+    {
+      "char": "アジアけんきゅう",
+      "romaji": "ajia kenkyuu",
+      "meaning": "Asian studies",
+      "category": "majors"
+    },
+    {
+      "char": "けいざい",
+      "romaji": "keezai",
+      "meaning": "economics",
+      "category": "majors"
+    },
+    {
+      "char": "こうがく",
+      "romaji": "koogaku",
+      "meaning": "engineering",
+      "category": "majors"
+    },
+    {
+      "char": "こくさいかんけい",
+      "romaji": "kokusaikankee",
+      "meaning": "international relations",
+      "category": "majors"
+    },
+    {
+      "char": "コンピューター",
+      "romaji": "konpyuutaa",
+      "meaning": "computer",
+      "category": "majors"
+    },
+    {
+      "char": "せいじ",
+      "romaji": "seeji",
+      "meaning": "politics",
+      "category": "majors"
+    },
+    {
+      "char": "せいぶつがく",
+      "romaji": "seebutsugaku",
+      "meaning": "biology",
+      "category": "majors"
+    },
+    {
+      "char": "ビジネス",
+      "romaji": "bijinesu",
+      "meaning": "business",
+      "category": "majors"
+    },
+    {
+      "char": "ぶんがく",
+      "romaji": "bungaku",
+      "meaning": "literature",
+      "category": "majors"
+    },
+    {
+      "char": "れきし",
+      "romaji": "rekishi",
+      "meaning": "history",
+      "category": "majors"
+    },
+    {
+      "char": "いしゃ",
+      "romaji": "isha",
+      "meaning": "doctor",
+      "category": "occupations"
+    },
+    {
+      "char": "かいしゃいん",
+      "romaji": "kaishain",
+      "meaning": "office worker",
+      "category": "occupations"
+    },
+    {
+      "char": "かんごし",
+      "romaji": "kangoshi",
+      "meaning": "nurse",
+      "category": "occupations"
+    },
+    {
+      "char": "こうこうせい",
+      "romaji": "kookoosee",
+      "meaning": "high school student",
+      "category": "occupations"
+    },
+    {
+      "char": "しゅふ",
+      "romaji": "shufu",
+      "meaning": "housewife",
+      "category": "occupations"
+    },
+    {
+      "char": "だいがくいんせい",
+      "romaji": "daigakuinsee",
+      "meaning": "graduate student",
+      "category": "occupations"
+    },
+    {
+      "char": "べんごし",
+      "romaji": "bengoshi",
+      "meaning": "lawyer",
+      "category": "occupations"
+    },
+    {
+      "char": "おかあさん",
+      "romaji": "okaasan",
+      "meaning": "mother",
+      "category": "family"
+    },
+    {
+      "char": "おとうさん",
+      "romaji": "otoosan",
+      "meaning": "father",
+      "category": "family"
+    },
+    {
+      "char": "おねえさん",
+      "romaji": "oneesan",
+      "meaning": "older sister",
+      "category": "family"
+    },
+    {
+      "char": "おにいさん",
+      "romaji": "oniisan",
+      "meaning": "older brother",
+      "category": "family"
+    },
+    {
+      "char": "いもうと",
+      "romaji": "imooto",
+      "meaning": "younger sister",
+      "category": "family"
+    },
+    {
+      "char": "おとうと",
+      "romaji": "otooto",
+      "meaning": "younger brother",
+      "category": "family"
+    }
+  ]
+}

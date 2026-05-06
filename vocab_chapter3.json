@@ -1,0 +1,340 @@
+{
+  "vocab": [
+    {
+      "char": "えいが",
+      "romaji": "eega",
+      "meaning": "movie",
+      "category": "entertainment and sports"
+    },
+    {
+      "char": "おんがく",
+      "romaji": "ongaku",
+      "meaning": "music",
+      "category": "entertainment and sports"
+    },
+    {
+      "char": "ざっし",
+      "romaji": "zasshi",
+      "meaning": "magazine",
+      "category": "entertainment and sports"
+    },
+    {
+      "char": "スポーツ",
+      "romaji": "supootsu",
+      "meaning": "sports",
+      "category": "entertainment and sports"
+    },
+    {
+      "char": "デート",
+      "romaji": "deeto",
+      "meaning": "date (romantic, not calendar)",
+      "category": "entertainment and sports"
+    },
+    {
+      "char": "テニス",
+      "romaji": "tenisu",
+      "meaning": "tennis",
+      "category": "entertainment and sports"
+    },
+    {
+      "char": "テレビ",
+      "romaji": "terebi",
+      "meaning": "TV",
+      "category": "entertainment and sports"
+    },
+    {
+      "char": "アイスクリーム",
+      "romaji": "aisukuriimu",
+      "meaning": "ice cream",
+      "category": "foods and drinks"
+    },
+    {
+      "char": "ハンバーガー",
+      "romaji": "hanbaagaa",
+      "meaning": "hamburger",
+      "category": "foods and drinks"
+    },
+    {
+      "char": "おさけ",
+      "romaji": "osake",
+      "meaning": "sake; alcoholic drink",
+      "category": "foods and drinks"
+    },
+    {
+      "char": "おちゃ",
+      "romaji": "ocha",
+      "meaning": "green tea",
+      "category": "foods and drinks"
+    },
+    {
+      "char": "コーヒー",
+      "romaji": "koohii",
+      "meaning": "coffee",
+      "category": "foods and drinks"
+    },
+    {
+      "char": "みず",
+      "romaji": "mizu",
+      "meaning": "water",
+      "category": "foods and drinks"
+    },
+    {
+      "char": "あさごはん",
+      "romaji": "asagohan",
+      "meaning": "breakfast",
+      "category": "foods and drinks"
+    },
+    {
+      "char": "ひるごはん",
+      "romaji": "hirugohan",
+      "meaning": "lunch",
+      "category": "foods and drinks"
+    },
+    {
+      "char": "ばんごはん",
+      "romaji": "bangohan",
+      "meaning": "dinner",
+      "category": "foods and drinks"
+    },
+    {
+      "char": "いえ",
+      "romaji": "ie",
+      "meaning": "home; house",
+      "category": "places"
+    },
+    {
+      "char": "うち",
+      "romaji": "uchi",
+      "meaning": "home; house; my place",
+      "category": "places"
+    },
+    {
+      "char": "がっこう",
+      "romaji": "gakkoo",
+      "meaning": "school",
+      "category": "places"
+    },
+    {
+      "char": "カフェ",
+      "romaji": "kafe",
+      "meaning": "cafe",
+      "category": "places"
+    },
+    {
+      "char": "あした",
+      "romaji": "ashita",
+      "meaning": "tomorrow",
+      "category": "time"
+    },
+    {
+      "char": "きょう",
+      "romaji": "kyoo",
+      "meaning": "today",
+      "category": "time"
+    },
+    {
+      "char": "あさ",
+      "romaji": "asa",
+      "meaning": "morning",
+      "category": "time"
+    },
+    {
+      "char": "こんばん",
+      "romaji": "konban",
+      "meaning": "tonight",
+      "category": "time"
+    },
+    {
+      "char": "まいにち",
+      "romaji": "mainichi",
+      "meaning": "every day",
+      "category": "time"
+    },
+    {
+      "char": "まいばん",
+      "romaji": "maiban",
+      "meaning": "every night",
+      "category": "time"
+    },
+    {
+      "char": "しゅうまつ",
+      "romaji": "shuumatsu",
+      "meaning": "weekend",
+      "category": "time"
+    },
+    {
+      "char": "どようび",
+      "romaji": "doyoobi",
+      "meaning": "Saturday",
+      "category": "time"
+    },
+    {
+      "char": "にちようび",
+      "romaji": "nichiyoobi",
+      "meaning": "Sunday",
+      "category": "time"
+    },
+    {
+      "char": "いつ",
+      "romaji": "itsu",
+      "meaning": "when",
+      "category": "time"
+    },
+    {
+      "char": "～ごろ",
+      "romaji": "...goro",
+      "meaning": "at about ...",
+      "category": "time"
+    },
+    {
+      "char": "いく",
+      "romaji": "iku",
+      "meaning": "to go",
+      "category": "u-verbs"
+    },
+    {
+      "char": "かえる",
+      "romaji": "kaeru",
+      "meaning": "to go back; to return",
+      "category": "u-verbs"
+    },
+    {
+      "char": "きく",
+      "romaji": "kiku",
+      "meaning": "to listen; to hear",
+      "category": "u-verbs"
+    },
+    {
+      "char": "のむ",
+      "romaji": "nomu",
+      "meaning": "to drink",
+      "category": "u-verbs"
+    },
+    {
+      "char": "はなす",
+      "romaji": "hanasu",
+      "meaning": "to speak; to talk",
+      "category": "u-verbs"
+    },
+    {
+      "char": "よむ",
+      "romaji": "yomu",
+      "meaning": "to read",
+      "category": "u-verbs"
+    },
+    {
+      "char": "おきる",
+      "romaji": "okiru",
+      "meaning": "to get up",
+      "category": "ru-verbs"
+    },
+    {
+      "char": "たべる",
+      "romaji": "taberu",
+      "meaning": "to eat",
+      "category": "ru-verbs"
+    },
+    {
+      "char": "ねる",
+      "romaji": "neru",
+      "meaning": "to sleep; to go to sleep",
+      "category": "ru-verbs"
+    },
+    {
+      "char": "みる",
+      "romaji": "miru",
+      "meaning": "to see; to look at; to watch",
+      "category": "ru-verbs"
+    },
+    {
+      "char": "くる",
+      "romaji": "kuru",
+      "meaning": "to come",
+      "category": "irregular verbs"
+    },
+    {
+      "char": "する",
+      "romaji": "suru",
+      "meaning": "to do",
+      "category": "irregular verbs"
+    },
+    {
+      "char": "べんきょうする",
+      "romaji": "benkyoo suru",
+      "meaning": "to study",
+      "category": "irregular verbs"
+    },
+    {
+      "char": "いい",
+      "romaji": "ii",
+      "meaning": "good",
+      "category": "adjectives"
+    },
+    {
+      "char": "はやい",
+      "romaji": "hayai",
+      "meaning": "early",
+      "category": "adjectives"
+    },
+    {
+      "char": "あまり + negative",
+      "romaji": "amari",
+      "meaning": "not much",
+      "category": "adverbs"
+    },
+    {
+      "char": "ぜんぜん + negative",
+      "romaji": "zenzen",
+      "meaning": "not at all",
+      "category": "adverbs"
+    },
+    {
+      "char": "たいてい",
+      "romaji": "taitee",
+      "meaning": "usually",
+      "category": "adverbs"
+    },
+    {
+      "char": "ちょっと",
+      "romaji": "chotto",
+      "meaning": "a little",
+      "category": "adverbs"
+    },
+    {
+      "char": "ときどき",
+      "romaji": "tokidoki",
+      "meaning": "sometimes",
+      "category": "adverbs"
+    },
+    {
+      "char": "よく",
+      "romaji": "yoku",
+      "meaning": "often; much",
+      "category": "adverbs"
+    },
+    {
+      "char": "そうですね",
+      "romaji": "soo desu ne",
+      "meaning": "That's right.; Let me see.",
+      "category": "expressions"
+    },
+    {
+      "char": "でも",
+      "romaji": "demo",
+      "meaning": "but",
+      "category": "expressions"
+    },
+    {
+      "char": "どうですか",
+      "romaji": "doo desu ka",
+      "meaning": "How about ...?; How is ...?",
+      "category": "expressions"
+    },
+    {
+      "char": "ええ",
+      "romaji": "ee",
+      "meaning": "yes",
+      "category": "expressions"
+    }
+  ]
+}

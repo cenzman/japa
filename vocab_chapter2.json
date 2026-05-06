@@ -1,0 +1,346 @@
+{
+  "vocab": [
+    {
+      "char": "これ",
+      "romaji": "kore",
+      "meaning": "this one",
+      "category": "words that point"
+    },
+    {
+      "char": "それ",
+      "romaji": "sore",
+      "meaning": "that one",
+      "category": "words that point"
+    },
+    {
+      "char": "あれ",
+      "romaji": "are",
+      "meaning": "that one (over there)",
+      "category": "words that point"
+    },
+    {
+      "char": "どれ",
+      "romaji": "dore",
+      "meaning": "which one",
+      "category": "words that point"
+    },
+    {
+      "char": "この",
+      "romaji": "kono",
+      "meaning": "this ...",
+      "category": "words that point"
+    },
+    {
+      "char": "その",
+      "romaji": "sono",
+      "meaning": "that ...",
+      "category": "words that point"
+    },
+    {
+      "char": "あの",
+      "romaji": "ano",
+      "meaning": "that ... (over there)",
+      "category": "words that point"
+    },
+    {
+      "char": "どの",
+      "romaji": "dono",
+      "meaning": "which ...",
+      "category": "words that point"
+    },
+    {
+      "char": "ここ",
+      "romaji": "koko",
+      "meaning": "here",
+      "category": "words that point"
+    },
+    {
+      "char": "そこ",
+      "romaji": "soko",
+      "meaning": "there",
+      "category": "words that point"
+    },
+    {
+      "char": "あそこ",
+      "romaji": "asoko",
+      "meaning": "over there",
+      "category": "words that point"
+    },
+    {
+      "char": "どこ",
+      "romaji": "doko",
+      "meaning": "where",
+      "category": "words that point"
+    },
+    {
+      "char": "だれ",
+      "romaji": "dare",
+      "meaning": "who",
+      "category": "words that point"
+    },
+    {
+      "char": "おいしい",
+      "romaji": "oishii",
+      "meaning": "delicious",
+      "category": "food"
+    },
+    {
+      "char": "さかな",
+      "romaji": "sakana",
+      "meaning": "fish",
+      "category": "food"
+    },
+    {
+      "char": "とんかつ",
+      "romaji": "tonkatsu",
+      "meaning": "pork cutlet",
+      "category": "food"
+    },
+    {
+      "char": "にく",
+      "romaji": "niku",
+      "meaning": "meat",
+      "category": "food"
+    },
+    {
+      "char": "メニュー",
+      "romaji": "menyuu",
+      "meaning": "menu",
+      "category": "food"
+    },
+    {
+      "char": "やさい",
+      "romaji": "yasai",
+      "meaning": "vegetable",
+      "category": "food"
+    },
+    {
+      "char": "かさ",
+      "romaji": "kasa",
+      "meaning": "umbrella",
+      "category": "things"
+    },
+    {
+      "char": "かばん",
+      "romaji": "kaban",
+      "meaning": "bag",
+      "category": "things"
+    },
+    {
+      "char": "くつ",
+      "romaji": "kutsu",
+      "meaning": "shoes",
+      "category": "things"
+    },
+    {
+      "char": "さいふ",
+      "romaji": "saifu",
+      "meaning": "wallet",
+      "category": "things"
+    },
+    {
+      "char": "ジーンズ",
+      "romaji": "jiinzu",
+      "meaning": "jeans",
+      "category": "things"
+    },
+    {
+      "char": "じてんしゃ",
+      "romaji": "jitensha",
+      "meaning": "bicycle",
+      "category": "things"
+    },
+    {
+      "char": "しんぶん",
+      "romaji": "shinbun",
+      "meaning": "newspaper",
+      "category": "things"
+    },
+    {
+      "char": "スマホ",
+      "romaji": "sumaho",
+      "meaning": "smartphone; mobile",
+      "category": "things"
+    },
+    {
+      "char": "Tシャツ",
+      "romaji": "tiishatsu",
+      "meaning": "T-shirt",
+      "category": "things"
+    },
+    {
+      "char": "とけい",
+      "romaji": "tokee",
+      "meaning": "watch; clock",
+      "category": "things"
+    },
+    {
+      "char": "ノート",
+      "romaji": "nooto",
+      "meaning": "notebook",
+      "category": "things"
+    },
+    {
+      "char": "ペン",
+      "romaji": "pen",
+      "meaning": "pen",
+      "category": "things"
+    },
+    {
+      "char": "ぼうし",
+      "romaji": "booshi",
+      "meaning": "hat; cap",
+      "category": "things"
+    },
+    {
+      "char": "ほん",
+      "romaji": "hon",
+      "meaning": "book",
+      "category": "things"
+    },
+    {
+      "char": "ぎんこう",
+      "romaji": "ginkoo",
+      "meaning": "bank",
+      "category": "places"
+    },
+    {
+      "char": "コンビニ",
+      "romaji": "konbini",
+      "meaning": "convenience store",
+      "category": "places"
+    },
+    {
+      "char": "トイレ",
+      "romaji": "toire",
+      "meaning": "toilet; restroom",
+      "category": "places"
+    },
+    {
+      "char": "としょかん",
+      "romaji": "toshokan",
+      "meaning": "library",
+      "category": "places"
+    },
+    {
+      "char": "ゆうびんきょく",
+      "romaji": "yuubinkyoku",
+      "meaning": "post office",
+      "category": "places"
+    },
+    {
+      "char": "イギリス",
+      "romaji": "Igirisu",
+      "meaning": "Britain",
+      "category": "countries"
+    },
+    {
+      "char": "かんこく",
+      "romaji": "Kankoku",
+      "meaning": "Korea",
+      "category": "countries"
+    },
+    {
+      "char": "ちゅうごく",
+      "romaji": "Chuugoku",
+      "meaning": "China",
+      "category": "countries"
+    },
+    {
+      "char": "えいご",
+      "romaji": "eego",
+      "meaning": "English (language)",
+      "category": "majors"
+    },
+    {
+      "char": "けいざい",
+      "romaji": "keezai",
+      "meaning": "economics",
+      "category": "majors"
+    },
+    {
+      "char": "コンピューター",
+      "romaji": "konpyuutaa",
+      "meaning": "computer",
+      "category": "majors"
+    },
+    {
+      "char": "ビジネス",
+      "romaji": "bijinesu",
+      "meaning": "business",
+      "category": "majors"
+    },
+    {
+      "char": "れきし",
+      "romaji": "rekishi",
+      "meaning": "history",
+      "category": "majors"
+    },
+    {
+      "char": "おかあさん",
+      "romaji": "okaasan",
+      "meaning": "mother",
+      "category": "family"
+    },
+    {
+      "char": "おとうさん",
+      "romaji": "otoosan",
+      "meaning": "father",
+      "category": "family"
+    },
+    {
+      "char": "いくら",
+      "romaji": "ikura",
+      "meaning": "how much",
+      "category": "money matters"
+    },
+    {
+      "char": "～えん",
+      "romaji": "...en",
+      "meaning": "...yen",
+      "category": "money matters"
+    },
+    {
+      "char": "たかい",
+      "romaji": "takai",
+      "meaning": "expensive; high",
+      "category": "money matters"
+    },
+    {
+      "char": "いらっしゃいませ",
+      "romaji": "irasshaimase",
+      "meaning": "Welcome (to our store).",
+      "category": "expressions"
+    },
+    {
+      "char": "(～を)おねがいします",
+      "romaji": "(...o) onegaishimasu",
+      "meaning": "..., please.",
+      "category": "expressions"
+    },
+    {
+      "char": "(～を)ください",
+      "romaji": "(...o) kudasai",
+      "meaning": "Please give me ...",
+      "category": "expressions"
+    },
+    {
+      "char": "じゃあ",
+      "romaji": "jaa",
+      "meaning": "then ...; if that is the case, ...",
+      "category": "expressions"
+    },
+    {
+      "char": "どうぞ",
+      "romaji": "doozo",
+      "meaning": "Please.; Here it is.",
+      "category": "expressions"
+    },
+    {
+      "char": "どうも",
+      "romaji": "doomo",
+      "meaning": "Thank you.",
+      "category": "expressions"
+    }
+  ]
+}

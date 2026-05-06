@@ -78,7 +78,8 @@ h3 { font-size:1.1rem; font-weight:600; margin-bottom:8px; }
 .flashcard-mnemonic { font-size:.9rem; color:var(--text3); margin-top:16px; font-style:italic; text-align:center; }
 .flashcard-nav { display:flex; gap:16px; align-items:center; }
 .flashcard-counter { color:var(--text2); font-size:.9rem; min-width:80px; text-align:center; }
-.flashcard-filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+.flashcard-filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; align-items:center; }
+.fc-filter-divider { color:var(--text3); font-size:1.2rem; margin:0 4px; user-select:none; }
 
 /* SRS MODE TOGGLE */
 .srs-mode-toggle { display:flex; gap:4px; background:var(--surface); border-radius:var(--radius-sm); padding:4px; margin-bottom:16px; max-width:360px; }
